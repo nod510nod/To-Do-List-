@@ -1,0 +1,10 @@
+git init ..initialize local git
+git add<file>...add files to index or staging area
+git status....see what files are in the staging area
+git commit...save changes made
+git push...upload to remote repo
+git pull....pulls the latest files from repo
+get clone...copies files from remote repo
+
+
+git --version
