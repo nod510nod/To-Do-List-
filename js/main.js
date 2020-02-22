@@ -1,6 +1,11 @@
 function userInput(e){
+//prevent the submit button from going the next page.
 e.preventDefault();
+
+//get the vlaue from the front end
 var inputBox = document.querySelector('input[type="text"]').value;
+
+//create new element
   var newli = document.createElement('li');
   //add class
   newli.className = 'list-group-item';
@@ -16,6 +21,7 @@ var inputBox = document.querySelector('input[type="text"]').value;
   redButton.setAttribute('name','button');
   var redButtonText = document.createTextNode('X');
 
+  //add text to button
   redButton.appendChild(redButtonText);
 
   // //get UL
@@ -24,11 +30,8 @@ var inputBox = document.querySelector('input[type="text"]').value;
   // //add to last element
   getUL.appendChild(newli);
 
-
   //add button to last list item
   getUL.appendChild(newli).appendChild(redButton);
-
-  console.log(getUL.appendChild(newli).appendChild(redButton));
 
   //clear text input
   if(inputBox.length > 0){
@@ -37,20 +40,24 @@ var inputBox = document.querySelector('input[type="text"]').value;
 
 };
 
+  //get the submit button from the frontend
   var submitButton = document.querySelector('button[type="submit"]');
-  //console.log(submitButton);
-submitButton.addEventListener('click',userInput,false);
+  //onclick the userInput function fires
+  submitButton.addEventListener('click',userInput,false);
 
-function deleteLine() {
+  //function to hide line item
+  function deleteLine() {
  this.parentElement.style.display = "none";
 };
 
+//grab the close button from front end
+var closeBtn = document.getElementsByClassName("btn btn-danger btn-sm float-right");
 
-var redX = document.getElementsByClassName("btn btn-danger btn-sm float-right");
-
+//get length of the items in the UL
  var ulLength = document.getElementsByTagName('li');
 
+//loop through each ul element 
 for(var i = 0; i < ulLength.length; i++){
-redX[i].addEventListener('click',deleteLine,false);
+closeBtn[i].addEventListener('click',deleteLine,false);
 
 };
