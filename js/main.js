@@ -5,12 +5,13 @@ e.preventDefault();
 var inputBox = document.querySelector('input[type="text"]').value;
 //create new element
   var newli = document.createElement('li');
+  var newSpan = document.createElement('span');
   //add class
   newli.className = 'list-group-item';
   //create node
   var liNode = document.createTextNode(inputBox);
   //add node to element
-  newli.appendChild(liNode);
+  newli.appendChild(newSpan).appendChild(liNode);
   //create button
   var redButton = document.createElement('button');
   redButton.className = "btn btn-danger btn-sm float-right";
@@ -64,7 +65,8 @@ function deleteLine() {
   function search(){
     var filter = searchBx.value.toUpperCase();
     var getUl = document.querySelector('ul');
-    var getli = document.querySelectorAll('.list-group-item');
+    var getli = document.getElementsByTagName('span');
+    var getli2 = document.querySelectorAll('.list-group-item');
 
 
 
@@ -72,10 +74,10 @@ function deleteLine() {
     var searchText = (getli[i].innerText).toUpperCase().indexOf(filter);
     //console.log(search);
     if(searchText > -1){
-      getli[i].style.display ="";
+      getli2[i].style.display ="";
     }
     else{
-      getli[i].style.display ="none";
+      getli2[i].style.display ="none";
     }
     };
   };
