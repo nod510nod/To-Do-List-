@@ -29,18 +29,55 @@ var inputBox = document.querySelector('input[type="text"]').value;
   if(inputBox.length > 0){
     document.querySelector('input[type="text"]').value = "";
   }
+
+  //function to hide line item
+function deleteLine() {
+  this.parentElement.style.display = "none";
+};
+
+var closeBtn = document.getElementsByClassName("btn btn-danger btn-sm float-right");
+//loop through each ul element
+for(var i = 0; i < getUL.children.length; i++){
+  closeBtn[i].addEventListener('click',deleteLine,false);
+};
+
+};
+  //get the submit button from the frontend
+  var submitButton = document.querySelector('button[type="submit"]');
+  //onclick the userInput function fires
+  submitButton.addEventListener('click',userInput,false);
+
   //function to hide line item
 function deleteLine() {
   this.parentElement.style.display = "none";
 };
   //grab the close button from front end
   var closeBtn = document.getElementsByClassName("btn btn-danger btn-sm float-right");
+  var getUL = document.getElementById('items');
   //loop through each ul element
   for(var i = 0; i < getUL.children.length; i++){
     closeBtn[i].addEventListener('click',deleteLine,false);
   };
-};
-  //get the submit button from the frontend
-  var submitButton = document.querySelector('button[type="submit"]');
-  //onclick the userInput function fires
-  submitButton.addEventListener('click',userInput,false);
+
+  var searchBx = document.querySelector('input');
+
+  function search(){
+    var filter = searchBx.value.toUpperCase();
+    var getUl = document.querySelector('ul');
+    var getli = document.querySelectorAll('.list-group-item');
+
+
+
+    for(var i = 0; i < getli.length; i++){
+    var searchText = (getli[i].innerText).toUpperCase().indexOf(filter);
+    //console.log(search);
+    if(searchText > -1){
+      getli[i].style.display ="";
+    }
+    else{
+      getli[i].style.display ="none";
+    }
+    };
+  };
+
+  searchBx.addEventListener('keyup',search,false);
